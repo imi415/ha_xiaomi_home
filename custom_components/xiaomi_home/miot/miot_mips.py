@@ -725,6 +725,7 @@ class _MipsClient(ABC):
                 self.log_error(f'retry mips sub internal error, {topic}')
                 continue
             subbed_count += 1
+            self.log_debug(f'mips sub internal entry, {topic}')
             result, mid = self._mqtt.subscribe(topic, qos=self.MIPS_QOS)
             if result == MQTT_ERR_SUCCESS:
                 self._mips_sub_pending_map.pop(topic)
